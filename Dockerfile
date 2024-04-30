@@ -1,4 +1,4 @@
-FROM python
+FROM python:3.11-slim
 
 ARG CHROMEVERSION
 ARG CHROMEURL
@@ -7,9 +7,11 @@ ENV MSR_CHROMEVERSION=$CHROMEVERSION
 ENV CHROMEDLURL=$CHROMEURL
 
 # download and install google chrome and xvfb
-RUN wget -O /tmp/chrome.deb $CHROMEDLURL
-RUN apt-get update && apt-get install -y /tmp/chrome.deb xvfb
-RUN google-chrome --version
+RUN apt-get update && apt-get install -y wget git && \
+  wget -O /tmp/chrome.deb $CHROMEDLURL && \
+  apt-get install -y /tmp/chrome.deb xvfb && \
+  rm -f /tmp/chrome.deb && \
+  google-chrome --version
 
 # create the app directory
 WORKDIR /app
