@@ -18,7 +18,7 @@ WORKDIR /app
 RUN git clone https://github.com/klept0/MS-Rewards-Farmer.git ./
 
 # install dependencies
-RUN pip install blinker==1.7.0
+RUN pip install --root-user-action=ignore blinker==1.7.0
 RUN pip install --root-user-action=ignore -r requirements.txt
 
 # setting display enviroment stuff
