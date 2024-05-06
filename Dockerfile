@@ -7,9 +7,11 @@ ENV MSR_CHROMEVERSION=$CHROMEVERSION
 ENV CHROMEDLURL=$CHROMEURL
 
 # download and install google chrome and xvfb
-RUN wget -O /tmp/chrome.deb $CHROMEDLURL
-RUN apt-get update && apt-get install -y /tmp/chrome.deb xvfb
-RUN google-chrome --version
+RUN apt-get update && apt-get install -y wget git && \
+  wget -O /tmp/chrome.deb $CHROMEDLURL && \
+  apt-get install -y /tmp/chrome.deb xvfb && \
+  rm -f /tmp/chrome.deb && \
+  google-chrome --version
 
 # create the app directory
 WORKDIR /app
@@ -18,7 +20,6 @@ WORKDIR /app
 RUN git clone https://github.com/klept0/MS-Rewards-Farmer.git ./
 
 # install dependencies
-RUN pip install --root-user-action=ignore blinker==1.7.0
 RUN pip install --root-user-action=ignore -r requirements.txt
 
 # setting display enviroment stuff
