@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       chrome_version:
-        description: 'Chrome version'
+        description: 'Chrome major version'
         required: true
         type: string
       chrome_url:
-        description: 'Chrome URL for download'
+        description: 'Chrome URL for download (can be find at: https://www.ubuntuupdates.org/package/google_chrome/stable/main/base/google-chrome-stable)'
         required: true
         type: string
   
