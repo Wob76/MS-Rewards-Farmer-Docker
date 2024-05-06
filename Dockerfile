@@ -1,4 +1,4 @@
-FROM python:slim
+FROM python:alpine
 
 ARG CHROMEVERSION
 ARG CHROMEURL
