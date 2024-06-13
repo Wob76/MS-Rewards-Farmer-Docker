@@ -72,6 +72,11 @@ then
   PARAMS="$PARAMS --chromeversion $MSR_CHROMEVERSION"
 fi
 
+# update Chrome
+echo "Updating Chrome"
+apt-get update
+apt-get install --only-upgrade google-chrome-stable
+
 # start virtual display
 Xvfb $DISPLAY -screen 1 1280x800x8 -nolisten tcp &
 
