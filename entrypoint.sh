@@ -74,6 +74,7 @@ fi
 
 # update Chrome
 echo "Updating Chrome"
+chmod 1777 /tmp
 apt-get update
 apt-get install --only-upgrade google-chrome-stable
 
