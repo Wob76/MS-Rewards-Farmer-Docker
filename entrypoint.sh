@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# Update Chrome
+echo "Updating Chrome"
+chmod 1777 /tmp
+apt-get update
+apt-get install --only-upgrade google-chrome-stable
+
 # clean up old runtime files
 echo "$(date +"%Y-%m-%d %H:%M:%S,%3N") [INFO] Cleaning up tmp folder"
 rm -rf /tmp/* /tmp/.*
@@ -71,12 +77,6 @@ then
   echo "$(date +"%Y-%m-%d %H:%M:%S,%3N") [INFO] Setting Chrome version"
   PARAMS="$PARAMS --chromeversion $MSR_CHROMEVERSION"
 fi
-
-# update Chrome
-echo "Updating Chrome"
-chmod 1777 /tmp
-apt-get update
-apt-get install --only-upgrade google-chrome-stable
 
 # start virtual display
 Xvfb $DISPLAY -screen 1 1280x800x8 -nolisten tcp &
