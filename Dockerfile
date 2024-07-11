@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y wget git && \
 WORKDIR /app
 
 # clone the project
-RUN git clone https://github.com/klept0/MS-Rewards-Farmer.git ./
+RUN git clone --single-branch --branch develop https://github.com/klept0/MS-Rewards-Farmer.git ./
 
 # install dependencies
 RUN pip install --root-user-action=ignore -r requirements.txt
