@@ -16,6 +16,10 @@ RUN apt-get update && apt-get install -y wget git && \
 # create the app directory
 WORKDIR /app
 
+# Pulled from Official Dockerfile
+DEBIAN_FRONTEND=noninteractive apt-get install -y chromium chromium-driver cron locales && \
+sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+
 # clone the project
 RUN git clone https://github.com/klept0/MS-Rewards-Farmer.git ./
 
