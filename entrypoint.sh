@@ -5,6 +5,7 @@ echo "Updating Chrome"
 chmod 1777 /tmp
 apt-get update
 apt-get install --only-upgrade google-chrome-stable
+apt autoremove
 
 # clean up old runtime files
 echo "$(date +"%Y-%m-%d %H:%M:%S,%3N") [INFO] Cleaning up tmp folder"
@@ -72,11 +73,11 @@ then
   PARAMS="$PARAMS --verbosenotifs"
 fi
 
-if [ ! -z "$MSR_CHROMEVERSION" ]
-then
-  echo "$(date +"%Y-%m-%d %H:%M:%S,%3N") [INFO] Setting Chrome version"
-  PARAMS="$PARAMS --chromeversion $MSR_CHROMEVERSION"
-fi
+#if [ ! -z "$MSR_CHROMEVERSION" ]
+#then
+#  echo "$(date +"%Y-%m-%d %H:%M:%S,%3N") [INFO] Setting Chrome version"
+#  PARAMS="$PARAMS --chromeversion $MSR_CHROMEVERSION"
+#fi
 
 # start virtual display
 Xvfb $DISPLAY -screen 1 1280x800x8 -nolisten tcp &
